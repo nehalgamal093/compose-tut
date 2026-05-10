@@ -1,5 +1,4 @@
 package com.example.compose_tut
-
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -19,11 +18,19 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.compose_tut.ui.theme.LightBlue00
+import com.example.compose_tut.ui.theme.LightBlue01
+import com.example.compose_tut.ui.theme.OrangeColor00
+import com.example.compose_tut.ui.theme.Pink00
+import com.example.compose_tut.ui.theme.Pink01
+import com.example.compose_tut.ui.theme.robotoFontFamily
 
-@Preview(showBackground = true, name = "row", device = "spec:width=600px,height=2340px,dpi=440")
+@Preview(showBackground = true, name = "row", device = "spec:width=1080px,height=2400px,dpi=440")
 @Composable
 fun HomeScreen(){
     Box(
@@ -61,7 +68,9 @@ fun AppBar(){
 
 @Composable
 fun CategoriesList(){
-    val features = listOf(Feature("Happiness",R.drawable.happiness,Color.Red),Feature("Meditation",R.drawable.meditation,Color.Yellow),Feature("Relax",R.drawable.relax,Color.Cyan),Feature("Focus",R.drawable.focus,Color.DarkGray))
+    val features = listOf(Feature("Happiness",R.drawable.happiness, Pink00),Feature("Meditation",R.drawable.meditation,LightBlue00),Feature("Relax",R.drawable.relax,
+        OrangeColor00
+    ),Feature("Focus",R.drawable.focus, LightBlue01))
     LazyRow(horizontalArrangement = Arrangement.spacedBy(5.dp)) {
         items(features.size){
             index-> ItemCard(features[index])
@@ -76,26 +85,29 @@ fun ItemCard(feature: Feature){
 
 @Composable
 fun BoxContent(feature: Feature){
-    Column(verticalArrangement = Arrangement.Center, horizontalAlignment = Alignment.CenterHorizontally) {
+    Column(verticalArrangement = Arrangement.spacedBy(5.dp), horizontalAlignment = Alignment.CenterHorizontally) {
         Image(
             painter = painterResource(feature.iconId),
             contentDescription = feature.title,
-            modifier = Modifier.width(20.dp).height(20.dp)
+            modifier = Modifier.width(50.dp).height(50.dp)
         )
-        Text(feature.title, fontSize = 8.sp)
+        Text(
+            feature.title, fontSize = 15.sp, fontFamily = robotoFontFamily,
+
+        )
     }
 }
 
 @Composable
 fun TodayTask(){
     Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
-        Text(text = "Today's Task")
+        Text(text = "Today's Task", fontSize = 15.sp, fontFamily = robotoFontFamily,)
         Box(
-            modifier = Modifier.fillMaxWidth().height(110.dp).background(Color.LightGray,RoundedCornerShape(10.dp)).padding(10.dp),
+            modifier = Modifier.fillMaxWidth().height(110.dp).background(Pink01,RoundedCornerShape(10.dp)).padding(10.dp),
             content = {
                 Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
                     Text(text = "Peer Group Meetup")
-                    Text(text = "Let's openup the thing that matters amoung the people")
+                    Text(text = "Let's openup the thing that matters amoung the people", fontSize = 5.sp, fontFamily = robotoFontFamily)
                     Row() {
                         Text(text = "Join Now")
                     }
