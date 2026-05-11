@@ -35,4 +35,4 @@ val Typography = Typography(
     */
 )
 
-val robotoFontFamily = FontFamily(Font(R.font.roboto, FontWeight.Normal))
+val robotoFontFamily = FontFamily(Font(R.font.roboto, FontWeight.Black),Font(R.font.roboto, FontWeight.W900))
